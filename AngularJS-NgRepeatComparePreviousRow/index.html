@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html ng-app="groupbymultipleelementsfunctionality">
+<head>
+    <meta charset="utf-8" />
+    <title>AngularJS - ng-repeat Functionality</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular.min.js"></script>
+    <script src="index.js"></script>
+</head>
+<body ng-controller="GroupByMultipleElementsController">
+    <div class="form-group container">
+        <div class="row">
+            <h3>AngularJS - Display Column Data Comparing With Previous Row In ng-repeat</h3>
+        </div>
+        <div class="row">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Item Category Code</th>
+                            <th>Item Category</th>
+                            <th>Item Code</th>
+                            <th>Item Name</th>
+                            <th>Item Old Price</th>
+                            <th>Item New Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-show="ItemDetails.length!=0" ng-repeat="item in ItemDetails">
+                            <td ng-if="ItemDetails[$index - 1].CategoryCode!=item.CategoryCode">{{item.CategoryCode}}</td>
+                            <td ng-if="ItemDetails[$index - 1].CategoryCode==item.CategoryCode"></td>
+                            <td ng-if="ItemDetails[$index - 1].CategoryCode!=item.CategoryCode">{{item.ItemCategory}}</td>
+                            <td ng-if="ItemDetails[$index - 1].CategoryCode==item.CategoryCode"></td>
+                            <td>{{ item.ItemName}}</td>
+                             <td>{{ item.ItemCode}}</td>
+                            <td>{{ item.ItemOldPrice}}</td>
+                            <td>{{ item.ItemNewPrice}}</td>
+                        </tr>
+
+                        <tr ng-show="ItemDetails.length==0" style="text-align:center;font-size:xx-large;color:lightgrey;font:bold 400% arial, verdana;">
+                            <td>
+                                No Records Found
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
